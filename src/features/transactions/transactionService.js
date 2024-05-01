@@ -57,7 +57,7 @@ const addMoney = async (data, token) => {
   }
   const response = await axios.post(
     API_URL + '/api/users/deposit',
-    { amount: data.amount },
+    data,
     config
   )
   return response.data

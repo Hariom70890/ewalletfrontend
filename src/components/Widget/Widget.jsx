@@ -43,7 +43,7 @@ const Widget = ({ type }) => {
  
      fetchCurrentUser();
    }, [openModal,dispatch]);
-// console.log(currentUser)
+console.log(currentUser)
    let data;
 
    const diff = 20;
