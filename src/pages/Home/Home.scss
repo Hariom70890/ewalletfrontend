@@ -1,0 +1,26 @@
+@import '../../Helper/helper.scss';
+
+.home {
+  display: flex;
+  .homeContainer {
+    flex: 6;
+    .widgets,
+    .charts {
+      display: flex;
+      padding: 1.25rem;
+      gap: 1.25rem;
+    }
+    .charts {
+      padding: 0.313rem 1.25rem;
+    }
+    .listContainer {
+      @include Shadow();
+      margin: 1.25rem;
+      .listTitle {
+        font-weight: 500;
+        color: gray;
+        margin-bottom: 0.938rem;
+      }
+    }
+  }
+}

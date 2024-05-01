@@ -1,0 +1,45 @@
+@import '../../Helper/helper.scss';
+
+.request {
+  display: flex;
+  width: 100%;
+  .requestContainer {
+    flex: 6;
+    .requests {
+      padding: 1.25rem;
+      h1 {
+        @include headingOne();
+      }
+      .requestsList {
+        @include Shadow();
+        .tableHead {
+          @include tableHead();
+        }
+        @include dateAndTime();
+        .cellWrapper {
+          @include cellWrapper();
+        }
+        .accept {
+          @include requestStatus($primaryColor, $white);
+          cursor: pointer;
+        }
+        .pending {
+          @include requestStatus($pendingBg, $pendingColor);
+        }
+        .paid {
+          @include requestStatus($paidBg, $paidColor);
+          cursor: pointer;
+        }
+        .accepted {
+          @include requestStatus($acceptedBg, $acceptedColor);
+        }
+      }
+    }
+  }
+  .singleTab.Mui-selected {
+    color: $primaryColor;
+  }
+  .MuiTabs-indicator {
+    background-color: $primaryColor;
+  }
+}

@@ -1,0 +1,47 @@
+@import '../../Helper/helper.scss';
+
+.transaction {
+  display: flex;
+  width: 100%;
+  .transactionContainer {
+    flex: 6;
+    .transactions {
+      padding: 1.25rem;
+      h1 {
+        @include headingOne();
+      }
+      .transactionsList {
+        @include Shadow();
+        .table {
+          .tableCell {
+            .deposit {
+              @include transactionStatus($depositBg, $depositColor);
+            }
+            .transfer {
+              @include transactionStatus($transferBg, $transferColor);
+            }
+            .payment {
+              @include transactionStatus($paymentBg, $paymentColor);
+            }
+            .refund {
+              @include transactionStatus($refundBg, $refundColor);
+            }
+          }
+          .tableHead {
+            @include tableHead();
+          }
+          @include dateAndTime();
+          .cellWrapper {
+            @include cellWrapper();
+          }
+        }
+        .singleTab.Mui-selected {
+          color: $primaryColor;
+        }
+        .MuiTabs-indicator {
+          background-color: $primaryColor;
+        }
+      }
+    }
+  }
+}

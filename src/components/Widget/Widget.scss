@@ -1,0 +1,50 @@
+@import '../../Helper/helper.scss';
+
+.widget {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  @include Shadow();
+  height: 8.25rem;
+  .left,
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .title {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: $widgetTitleColor;
+    }
+    .counter {
+      font-size: 1.75rem;
+      font-weight: 500;
+    }
+    .link {
+      font-size: 0.8rem;
+      color: $primaryColor;
+      font-weight: 500;
+      text-decoration: none;
+      width: fit-content;
+      &.link:hover {
+        text-decoration: underline;
+      }
+    }
+    .percentage {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      &.positive {
+        color: green;
+      }
+      &.negative {
+        color: red;
+      }
+    }
+    .icon {
+      font-size: 1.7rem;
+      align-self: flex-end;
+      @include paddingAndBorder();
+    }
+  }
+}

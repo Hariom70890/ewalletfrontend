@@ -1,0 +1,37 @@
+@import '../../Helper/helper.scss';
+
+.table {
+  .tableCell {
+    font-family: inherit;
+    font-weight: 500;
+  }
+  .tableHead {
+    @include tableHead();
+  }
+  .cellWrapper {
+    @include cellWrapper;
+  }
+  .image {
+    @include userImage;
+  }
+  .status {
+    @include Status;
+    &.Approved {
+      @include buttonSend();
+    }
+    &.Pending {
+      @include buttonRequest();
+    }
+  }
+
+  .send,
+  .req {
+    @include buttonStyleOne();
+  }
+  .send {
+    @include buttonSend();
+  }
+  .req {
+    @include buttonRequest();
+  }
+}

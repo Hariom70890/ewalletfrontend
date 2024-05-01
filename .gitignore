@@ -1,0 +1,10 @@
+
+# Environment variables
+.env
+.git
+.vscode
+.eslintrc.cjs
+
+
+# Node modules
+node_modules/

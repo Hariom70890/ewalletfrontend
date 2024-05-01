@@ -1,0 +1,4 @@
+export const SEND_REQUEST = 'SEND_REQUEST';
+export const REQUEST_SEND = 'REQUEST_SEND';
+export const REQUEST_RECEIVED = 'REQUEST_RECEIVED';
+export const UPDATE_REQUEST = 'UPDATE_REQUEST';

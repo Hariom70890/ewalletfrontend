@@ -1,0 +1,59 @@
+@import '../../Helper/helper.scss';
+
+.login {
+  height: 100vh;
+  font-weight: 500;
+  flex-direction: column;
+  @include flexPreset();
+  a {
+    text-decoration: underline;
+    color: $primaryColor;
+  }
+  .login__container {
+    min-width: 600px;
+  }
+  .login__header {
+    margin-bottom: 30px;
+    h1 {
+      margin-bottom: 0.625rem;
+      text-transform: capitalize;
+    }
+    p {
+      color: #888888;
+    }
+  }
+  .form__control {
+    width: 100%;
+    input,
+    select {
+      margin-bottom: 1.25rem;
+      @include formInputStyle(100%);
+    }
+  }
+  .btn {
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 0.313rem;
+    border: none;
+    outline: none;
+    background-color: $primaryColor;
+    color: #ffffff;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    margin-bottom: 0.625rem;
+    &:hover {
+      background-color: $primaryHover;
+    }
+  }
+  .small__text {
+    text-align: center;
+    color: #888888;
+    font-size: 14px;
+    .registerLink {
+      text-decoration: none;
+      color: $primaryColor;
+    }
+  }
+}

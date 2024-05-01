@@ -1,0 +1,53 @@
+@import '../../Helper/helper.scss';
+
+.sidebar {
+  flex: 1;
+  border-right: 0.4px solid rgb(230, 227, 227);
+  min-height: 100vh;
+  background-color: #ffffff;
+  .top {
+    @include flexPreset();
+    height: 50px;
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+    }
+  }
+
+  hr {
+    height: 0;
+    border: 0.4px solid rgb(230, 227, 227);
+  }
+
+  .center {
+    ul {
+      list-style-type: none;
+      .title {
+        font-size: 0.625rem;
+        font-weight: 700;
+        color: #999999;
+        margin: 1rem 0 1rem 0.3rem;
+      }
+      li {
+        display: flex;
+        align-items: center;
+        padding: 0.3rem;
+        cursor: pointer;
+        &:hover {
+          background-color: rgb(236, 232, 255);
+        }
+        .icon {
+          font-size: 1.1rem;
+          color: $primaryColor;
+        }
+
+        span {
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: #888888;
+          margin: 0 0 0 0.625rem;
+        }
+      }
+    }
+  }
+}
