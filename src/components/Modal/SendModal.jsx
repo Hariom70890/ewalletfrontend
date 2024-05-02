@@ -97,7 +97,7 @@ const SendModal = ({ setSendModalOpen, receiverId }) => {
                     />
                   </div>
                   <div className='formControl'>
-                    <label htmlFor='amount'>Amount</label>
+                    <label htmlFor='amount'>Amount *</label>
                     <input
                       type='number'
                       name='amount'
@@ -106,17 +106,18 @@ const SendModal = ({ setSendModalOpen, receiverId }) => {
                       onChange={onChange}
                       min='1'
                       max='100000'
-                      placeholder='$1000'
+                      placeholder='₹1000'
                       required
                     />
                   </div>
                   <div className='formControl'>
-                    <label htmlFor='transactionType'>Transaction Type</label>
+                    <label htmlFor='transactionType'>Transaction Type *</label>
                     <select
                       name='transactionType'
                       id='transactionType'
                       value={transactionType}
                       onChange={onChange}>
+                      <option value="">Please select Transaction Type</option>
                       <option value='payment'>payment</option>
                       <option value='transfer'>transfer</option>
                       <option value='deposit'>deposit</option>
@@ -124,12 +125,13 @@ const SendModal = ({ setSendModalOpen, receiverId }) => {
                     </select>
                   </div>
                   <div className='formControl'>
-                    <label htmlFor='reference'>Reference</label>
+                    <label htmlFor='reference'>Reference *</label>
                     <select
                       name='reference'
                       id='reference'
                       value={reference}
                       onChange={onChange}>
+                      <option value="">Please select a Reference</option>
                       <option value='transaction ID'>transaction ID</option>
                       <option value='payment reference'>
                         payment reference

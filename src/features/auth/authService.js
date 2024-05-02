@@ -32,6 +32,26 @@ const register = async (userData) => {
    return response.data;
 };
 
+const getCurrentUser = async (token) => {
+   const config = {
+      headers: {
+         Authorization: `Bearer ${token}`,
+      },
+   };
+   const response = await axios.get(API_URL + "/api/users/current_user", config);
+   return response.data;
+};
+
+const getUserById = async (userId) => {
+   try {
+      const response = await axios.get(`${API_URL}/api/users/${userId}`);
+      // console.log(response)
+      return response.data;
+   } catch (error) {
+      throw new Error(error.response.data.message || 'Failed to fetch user');
+   }
+};
+
 const logout = () => localStorage.removeItem("user");
 
 const authService = {
@@ -39,6 +59,8 @@ const authService = {
    logout,
    register,
    getAllUsers,
+   getCurrentUser,
+   getUserById
 };
 
 export default authService;

@@ -27,6 +27,7 @@ const getTransactions = async (userId, token) => {
     API_URL + '/api/get_transactions/' + userId,
     config
   )
+  // console.log(response)
   return response.data
 }
 

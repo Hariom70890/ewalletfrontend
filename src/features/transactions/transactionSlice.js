@@ -51,6 +51,7 @@ export const addBalance = createAsyncThunk(
 export const getTransactions = createAsyncThunk(
   'transaction/getTransactions',
   async (userId, thunkAPI) => {
+    console.log(userId)
     try {
       const token = thunkAPI.getState().auth.user.token
       return await transactionService.getTransactions(userId, token)

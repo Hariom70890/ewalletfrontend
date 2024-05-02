@@ -2,6 +2,7 @@ import {
    AccountBalanceWalletRounded,
    MonetizationOnRounded,
 } from "@mui/icons-material";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import "./Widget.scss";
 import AssignmentReturnedRoundedIcon from "@mui/icons-material/AssignmentReturnedRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
@@ -17,37 +18,25 @@ import authService from "../../features/auth/authService";
 
 import { API_URL } from "../../features/constants";
 import axios from "axios";
+import { fetchCurrentUser } from "../../features/auth/authSlice";
 const Widget = ({ type }) => {
    const [openModal, setOpenModal] = useState(false);
    const dispatch = useDispatch();
    const { balance, moneySend, moneyReceived, requestReceived } = useSelector(
-      (state) => state.auth.user
+      (state) => state.auth.currentUser
    );
    // const streo = useSelector((state) => console.log(state));
-   const [currentUser, setCurrentUser] = useState(null);
-   const user = JSON.parse(localStorage.getItem('user'))   
+   // const [currentUser, setCurrentUser] = useState(null);
+   const user = JSON.parse(localStorage.getItem("user"));
 
    useEffect(() => {
-     const fetchCurrentUser = async () => {
-       try {
-         const response = await axios.get(`${API_URL}/api/users/current_user`, {
-           headers: {
-             Authorization: `Bearer ${user.token}`,
-           },
-         });
-         setCurrentUser(response.data);
-       } catch (error) {
-         console.error('Error fetching current user:', error);
-       }
-     };
- 
-     fetchCurrentUser();
-   }, [openModal,dispatch]);
-console.log(currentUser)
+      dispatch(fetchCurrentUser());
+   }, [openModal, dispatch]);
+
+   // console.log(currentUser)
    let data;
 
-   const diff = 20;
-   switch (type) {      
+   switch (type) {
       case "user":
          data = {
             title: "MONEY SEND",
@@ -92,11 +81,11 @@ console.log(currentUser)
             isAnyReq: true,
             linkText: "requests received",
             icon: (
-               <MonetizationOnRounded
+               <AccountBalanceWalletRounded
                   className="icon"
                   style={{
-                     color: "green",
-                     backgroundColor: "rgba(0,128,0,0.2)",
+                     color: "purple",
+                     backgroundColor: "rgba(128,0,128,0.2)",
                   }}
                />
             ),
@@ -107,17 +96,17 @@ console.log(currentUser)
             title: "BALANCE",
             isMoney: true,
             link: "/balance",
-            isBalance: true,
-            linkText: "add money",
             icon: (
-               <AccountBalanceWalletRounded
+               <CurrencyRupeeIcon
                   className="icon"
                   style={{
-                     color: "purple",
-                     backgroundColor: "rgba(128,0,128,0.2)",
+                     color: "green",
+                     backgroundColor: "rgba(0,128,0,0.2)",
                   }}
                />
             ),
+            isBalance: true,
+            linkText: "add money",
          };
          break;
 
@@ -135,10 +124,10 @@ console.log(currentUser)
          <div className="left">
             <span className="title">{data.title}</span>
             <span className="counter">
-               {data.isSend && currentUser?.moneySend}
-               {data.isReceived && currentUser?.moneyReceived}
-               {data.isAnyReq && currentUser?.requestReceived}
-               {data.isBalance && currentUser?.balance}
+               {data.isSend && moneySend}
+               {data.isReceived && moneyReceived}
+               {data.isAnyReq && requestReceived}
+               {data.isBalance && balance}
             </span>
             {data.link === "/balance" ? (
                <span
@@ -157,7 +146,6 @@ console.log(currentUser)
          <div className="right">
             <div className="percentage positive">
                <KeyboardArrowUpRoundedIcon />
-               {diff} %
             </div>
             {data.icon}
          </div>

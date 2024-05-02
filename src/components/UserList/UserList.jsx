@@ -6,7 +6,7 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { useSelector, useDispatch } from 'react-redux'
-import { getusers, reset } from '../../features/auth/authSlice'
+import { fetchCurrentUser, getusers, reset } from '../../features/auth/authSlice'
 import './UserList.scss'
 import { useEffect, useState } from 'react'
 import SendModal from '../Modal/SendModal'
@@ -27,6 +27,7 @@ const List = () => {
     return () => {
       if (isSuccess) {
         dispatch(reset())
+        dispatch(fetchCurrentUser());
       }
     }
   }, [dispatch, isSuccess])

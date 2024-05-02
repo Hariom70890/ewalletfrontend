@@ -10,6 +10,8 @@ const initialState = {
    isSuccess: false,
    isLoading: false,
    message: "",
+   currentUser:"",
+   currentUserById:""
 };
 
 // @login user
@@ -60,6 +62,40 @@ export const getusers = createAsyncThunk(
             error.message ||
             error.toString();
          return thunkAPI.rejectWithValue(message);
+      }
+   }
+);
+
+export const fetchCurrentUser = createAsyncThunk(
+   "auth/fetchCurrentUser",
+   async (_, thunkAPI) => {
+      try {
+         const user = JSON.parse(localStorage.getItem("user"));
+         
+         if (!user) {
+            throw new Error("User not found in local storage");
+         }
+         const response = await authService.getCurrentUser(user.token);
+         return response;
+      } catch (error) {
+         console.error("Failed to fetch current user:", error);
+         return thunkAPI.rejectWithValue(error.message || "Failed to fetch current user");
+      }
+   }
+);
+
+
+// Get single user by ID
+export const getUserById = createAsyncThunk(
+   "auth/getUserById",
+   async (userId, thunkAPI) => {
+      try {
+         const response = await authService.getUserById(userId);
+         // console.log(response)
+         return response;
+      } catch (error) {
+         // Handle error
+         return thunkAPI.rejectWithValue(error.message || "Failed to fetch user");
       }
    }
 );
@@ -124,6 +160,29 @@ export const authSlice = createSlice({
             state.isError = true;
             state.message = action.payload;
             state.users = null;
+         })
+         .addCase(fetchCurrentUser.pending, (state) => {
+            state.isLoading = true;
+         })
+         .addCase(fetchCurrentUser.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.currentUser = action.payload;
+         })
+         .addCase(fetchCurrentUser.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.message = action.payload;
+         })
+         .addCase(getUserById.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.currentUserById = action.payload;
+         })
+         .addCase(getUserById.pending, (state) => {
+            state.isLoading = true;
+         })
+         .addCase(getUserById.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = action.payload;
          })
          .addCase(logout.fulfilled, (state) => {
             state.user = null;
