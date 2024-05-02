@@ -44,7 +44,7 @@ const Admin = () => {
          dispatch(getTransactions(user._id)),
       ]).then(() => {
          setOpenDialog(true);
-       });
+      });
    };
 
    const UserDetailsDialog = () => {
@@ -91,7 +91,7 @@ const Admin = () => {
                                  >
                                     {transaction.receiver.name}
                                  </TableCell>
-                                 <TableCell>{transaction.amount}</TableCell>
+                                 <TableCell>₹{transaction.amount}</TableCell>
                                  <TableCell>
                                     {formatDate(transaction.createdAt)}
                                  </TableCell>

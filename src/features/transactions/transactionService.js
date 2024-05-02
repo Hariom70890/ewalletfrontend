@@ -14,6 +14,7 @@ const sendMoney = async (transactionData, token) => {
     transactionData,
     config
   )
+  console.log(response)
   return response.data
 }
 

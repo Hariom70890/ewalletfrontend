@@ -6,6 +6,7 @@ import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded'
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 import CompareArrowsRoundedIcon from '@mui/icons-material/CompareArrowsRounded'
 import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded'
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { logout, reset } from '../../features/auth/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -56,7 +57,7 @@ const Sidebar = () => {
           </Link>
           <Link to='/requests' style={{ textDecoration: 'none' }}>
             <li>
-              <AttachMoneyRoundedIcon className='icon' />
+              <CurrencyRupeeIcon className='icon' />
               <span>Requests</span>
             </li>
           </Link>
