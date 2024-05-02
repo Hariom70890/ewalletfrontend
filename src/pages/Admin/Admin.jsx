@@ -16,6 +16,7 @@ const Admin = () => {
    const dispatch = useDispatch();
    const { users, isLoading } = useSelector((state) => state.auth);
    const { verifySuccess } = useSelector((state) => state.verify);
+const userr = useSelector((state)=>console.log(state))
 
    useEffect(() => {
       dispatch(getusers());
@@ -24,14 +25,16 @@ const Admin = () => {
       }
    }, [dispatch, verifySuccess]);
 
+  //  console.log(users);
    const handleVerify = (user) => {
-      console.log(user);
       const verifiedUser = {
          _id: user._id,
          isVerified: !user.isVerified,
       };
       dispatch(verify(verifiedUser));
    };
+
+
 
    return (
       <div className="list">
