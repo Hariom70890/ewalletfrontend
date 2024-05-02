@@ -30,7 +30,7 @@ const Widget = ({ type }) => {
    useEffect(() => {
      const fetchCurrentUser = async () => {
        try {
-         const response = await axios.get(`http://localhost:4510/api/users/current_user`, {
+         const response = await axios.get(`${API_URL}/api/users/current_user`, {
            headers: {
              Authorization: `Bearer ${user.token}`,
            },
