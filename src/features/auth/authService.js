@@ -7,6 +7,7 @@ import { API_URL } from "../constants";
 const login = async (userData) => {
    const response = await axios.post(API_URL + "/api/users/login", userData);
 
+   // console.log(response)
    if (response.data) {
       localStorage.setItem("user", JSON.stringify(response.data));
    }
