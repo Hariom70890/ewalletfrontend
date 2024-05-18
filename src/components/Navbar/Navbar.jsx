@@ -2,12 +2,20 @@ import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import "./Navbar.scss";
 import Avatar from "../../assets/avatar.png";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUserImage } from "../../features/upload/uploadSlice";
 
 const Navbar = () => {
    const { name, image, isAdmin } = useSelector((state) => state.auth.user);
-  //  const temp = useSelector((ad) => console.log(ad.auth));
-   // console.log(isAdmin)
+   const temp = useSelector((ad) => console.log(ad.upload));
+   // console.log(image)
+const dispatch = useDispatch()
+   useEffect( () =>
+   {
+      getUserImage(dispatch)
+   },[])
+
    return (
       <div className="navbar">
          <div className="wrapper">

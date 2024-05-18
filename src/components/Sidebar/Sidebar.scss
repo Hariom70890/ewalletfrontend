@@ -4,6 +4,7 @@
   flex: 1;
   border-right: 0.4px solid rgb(230, 227, 227);
   min-height: 100vh;
+  // position: fixed;
   background-color: #ffffff;
   .top {
     @include flexPreset();

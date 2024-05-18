@@ -9,17 +9,21 @@
   left: 0;
   z-index: 1;
   @include flexPreset();
+
   .sendModalContainer {
     background-color: #fff;
     width: 600px;
     padding: 1.818rem;
     border-radius: 0.625rem;
+
     .sendModalContent {
       margin: 4rem 0 4rem;
     }
+
     form {
       display: flex;
       flex-direction: column;
+
       .btn {
         padding: 0.613rem;
         border-radius: 0.313rem;
@@ -31,29 +35,36 @@
         outline: none;
         background-color: $primaryColor;
         color: #ffffff;
+
         &:hover {
           background-color: $primaryHover;
         }
       }
     }
+
     .formControl {
       @include formControl();
+
       label {
         @include labelStyle();
       }
+
       input,
       select,
       textarea {
         @include formInputStyle(70%);
+
         &::placeholder {
           @include placeHolder();
         }
       }
     }
+
     .sendModalHeader {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       .closeIconContainer {
         display: flex;
         align-items: center;
@@ -63,8 +74,34 @@
         cursor: pointer;
         background-color: #f6f6f6;
         border-radius: 0.313rem;
+
         .closeIcon {
           color: #222222;
+        }
+      }
+    }
+  }
+}
+
+// Media Queries
+@media screen and (max-width: 768px) {
+  .sendmodal {
+    .sendModalContainer {
+      width: 80%;
+      padding: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sendmodal {
+    .sendModalContainer {
+      width: 90%;
+      padding: 0.5rem;
+
+      form {
+        .btn {
+          width: 100%;
         }
       }
     }
